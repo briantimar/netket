@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 
     } else if (netket::FieldExists(pars, "Unsupervised")) {
       netket::ErrorMessage()
-          << "Unsupervised Learning still under development, try later."
+          << "Supervised Learning still under development, try later."
           << "\n";
 
     } else {

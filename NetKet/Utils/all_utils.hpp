@@ -22,5 +22,6 @@
 #include "parallel_utils.hpp"
 #include "random_utils.hpp"
 #include "stopwatch.hpp"
+#include "data_loader.hpp"
 
 #endif
