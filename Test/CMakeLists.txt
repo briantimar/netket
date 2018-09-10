@@ -61,14 +61,14 @@ add_library(catch_main OBJECT
 
 
 file(GLOB TEST_SOURCES
-    Dynamics/*.cpp
-    Graph/*.cc
-    Hamiltonian/*.cc
-    Hilbert/*.cc
-    Machine/*.cc
-    Observable/*.cc
-    Sampler/*.cc
-    Stats/*.cc
+#    Dynamics/*.cpp
+#    Graph/*.cc
+#    Hamiltonian/*.cc
+#    Hilbert/*.cc
+#    Machine/*.cc
+#    Observable/*.cc
+#    Sampler/*.cc
+#    Stats/*.cc
     Utils/*.cc)
 
 foreach(file ${TEST_SOURCES})

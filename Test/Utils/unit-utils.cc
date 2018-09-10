@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <catch.hpp>
-
+#include <Eigen/Dense>
 #include "netket.hpp"
 
 using namespace netket;
@@ -73,4 +73,29 @@ TEST_CASE("JSON helper functions throw errors", "[stats]")
         pars["Key"] = 0;
         REQUIRE_NOTHROW(FieldVal(pars, "Key"));
     }
+}
+
+TEST_CASE("DataLoader", "[input]")
+{
+    SECTION("reading from txt successfully")
+    {
+        std::string inputname= "/Users/btimar/Documents/netket/Test/Utils/dataloader_input_test.txt";
+        DataLoader<double> DL(inputname);
+        auto data = DL.GetAll();
+        REQUIRE( data.rows()==2);
+        REQUIRE( data.cols() ==3);
+        REQUIRE( Approx(data(0,0))==1);
+        REQUIRE( Approx(data(1,0))==3.2);
+    }
+    SECTION("throwing errors on invalid inputs")
+    {
+      std::string f1 = "does_not.exist";
+      DataLoader<double> DL;
+      REQUIRE_THROWS_AS( DL.ReadAll(f1), InvalidInputError);
+
+      std::string f2 = "/Users/btimar/Documents/netket/Test/Utils/dataloader_input_empty.txt";
+      DataLoader<double> DL2;
+      REQUIRE_THROWS_AS(DL2.ReadAll(f2), InvalidInputError);
+    }
+
 }
